@@ -1,10 +1,6 @@
 import ContentfulImage from "../lib/contentful-image";
 import Link from "next/link";
 
-function cn(...classes: any[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function CoverImage({
   title,
   url,
@@ -15,27 +11,27 @@ export default function CoverImage({
   slug?: string;
 }) {
   const image = (
-    <ContentfulImage
-      alt={`Cover Image for ${title}`}
-      priority
-      width={2000}
-      height={1000}
-      className={cn("shadow-small", {
-        "hover:shadow-medium transition-shadow duration-200": slug,
-      })}
-      src={url}
-    />
+    <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
+      <ContentfulImage
+        alt={`Cover Image for ${title}`}
+        priority
+        width={2000}
+        height={1125}
+        className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+        src={url}
+      />
+    </div>
   );
 
   return (
-    <div className="sm:mx-0">
+    <>
       {slug ? (
-        <Link href={`/posts/${slug}`} aria-label={title}>
+        <Link href={`/posts/${slug}`} aria-label={title} className="block">
           {image}
         </Link>
       ) : (
         image
       )}
-    </div>
+    </>
   );
 }

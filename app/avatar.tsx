@@ -8,17 +8,20 @@ export default function Avatar({
   picture: any;
 }) {
   return (
-    <div className="flex items-center">
-      <div className="mr-4 w-12 h-12">
+    <div className="flex items-center gap-3 group">
+      <div className="relative w-10 h-10 overflow-hidden rounded-full ring-2 ring-border group-hover:ring-accent transition-all duration-300">
         <ContentfulImage
           alt={name}
-          className="object-cover h-full rounded-full"
-          height={48}
-          width={48}
+          className="object-cover w-full h-full"
+          height={40}
+          width={40}
           src={picture.url}
         />
       </div>
-      <div className="text-xl font-bold">{name}</div>
+      <div>
+        <p className="font-medium text-sm">{name}</p>
+        <p className="text-xs text-secondary">Author</p>
+      </div>
     </div>
   );
 }
