@@ -1,6 +1,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { EXAMPLE_PATH, CMS_NAME } from "@/lib/constants";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 export const metadata = {
   title: `Tech Blog - Modern Web Development Insights`,
@@ -116,6 +118,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col">
         <main className="flex-1">{children}</main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
